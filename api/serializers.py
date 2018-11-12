@@ -10,4 +10,4 @@ class OneHourElectricitySerializer(serializers.ModelSerializer):
     class Meta:
         panel = serializers.PrimaryKeyRelatedField(queryset=Panel.objects.all())
         model = OneHourElectricity
-        fields = ('id', 'panel', 'kilo_watt','date_time')
+        fields = ('id', 'panel', 'kilo_watt','date_time_db')

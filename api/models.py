@@ -13,6 +13,6 @@ class Panel(models.Model):
 class OneHourElectricity(models.Model):
     panel = models.ForeignKey(Panel, on_delete=models.CASCADE)
     kilo_watt = models.BigIntegerField()
-    date_time = models.DateTimeField()
+    date_time_db = models.DateTimeField()
     def __str__(self):
-        return "Hour: {0} - {1} KiloWatt".format(self.date_time, self.kilo_watt)
+        return "Hour: {0} - {1} KiloWatt".format(self.date_time_db, self.kilo_watt)

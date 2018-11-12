@@ -42,9 +42,9 @@ class DayAnalyticsView(APIView):
         # up to the end of the previous day.
         report_kwatts = OneHourElectricity.objects \
             .filter(panel__exact=panelid) \
-            .filter(date_time__lte=end_yesterday) \
-            .annotate(date_time_=Trunc('date_time', 'day', output_field=DateField())) \
-            .values('date_time_') \
+            .filter(date_time_db__lte=end_yesterday) \
+            .annotate(date_time=Trunc('date_time_db', 'day', output_field=DateField())) \
+            .values('date_time') \
             .annotate(sum=Sum('kilo_watt')) \
             .annotate(average=Avg('kilo_watt')) \
             .annotate(maximum=Max('kilo_watt')) \

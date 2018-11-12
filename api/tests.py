@@ -7,9 +7,9 @@ from .models import Panel, OneHourElectricity
 class PanelTestCase(APITestCase):
     def setUp(self):
         Panel.objects.create(brand="Areva", serial="AAAA1111BBBB2222", latitude=12.345678, longitude=178.765543)
-        OneHourElectricity.objects.create(panel_id=1, kilo_watt=100, date_time=datetime.now(tz=timezone.utc))
-        OneHourElectricity.objects.create(panel_id=1, kilo_watt=150, date_time="2018-09-01 01:00:00+00:00")
-        OneHourElectricity.objects.create(panel_id=1, kilo_watt=200, date_time="2018-09-01 02:00:00+00:00")
+        OneHourElectricity.objects.create(panel_id=1, kilo_watt=100, date_time_db=datetime.now(tz=timezone.utc))
+        OneHourElectricity.objects.create(panel_id=1, kilo_watt=150, date_time_db="2018-09-01 01:00:00+00:00")
+        OneHourElectricity.objects.create(panel_id=1, kilo_watt=200, date_time_db="2018-09-01 02:00:00+00:00")
 
     def test_panel_listing(self):
         response = self.client.get('/panel/', format='json')
